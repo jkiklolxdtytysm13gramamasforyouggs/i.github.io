@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bubba's Gramama Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: #00FFFC;
+      background: url('https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #passwordScreen, #mainContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #00FFFC, 0 0 60px #00FFFC inset;
+      text-align: center;
+    }
+
+    #mainContent { display: none; }
+
+    input[type="password"] {
+      padding: 12px;
+      font-size: 18px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 2px solid #00FFFC;
+      width: 250px;
+      text-align: center;
+      background-color: rgba(0,0,0,0.3);
+      color: #00FFFC;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 5px;
+      border-radius: 8px;
+      border: 2px solid #00FFFF;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+      background-color: rgba(0,0,0,0.4);
+      color: #00FFFF;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    button:hover {
+      box-shadow: 0 0 15px #00FFFF, 0 0 30px #00FFFF inset;
+      transform: scale(1.05);
+    }
+
+    h1 { margin-bottom: 20px; text-shadow: 0 0 10px #FF00FF, 0 0 20px #00FFFF; }
+    p { text-align: center; }
+    #errorMessage { margin-top: 10px; font-weight: bold; color: #FF0000; text-shadow: 0 0 5px #FF0000; }
+
+    /* Wormhole effect overlay with cosmic colors */
+    #wormhole {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 1s ease-in-out;
+      z-index: 9999;
+      pointer-events: none;
+      background: radial-gradient(circle at 30% 30%, #8A2BE2, #00FF00, #FF00FF, #00FFFF, #4B0082);
+      animation: pulseColors 1s infinite alternate;
+    }
+
+    @keyframes pulseColors {
+      0% { filter: hue-rotate(0deg) brightness(1); }
+      50% { filter: hue-rotate(90deg) brightness(1.2); }
+      100% { filter: hue-rotate(180deg) brightness(1); }
+    }
+  </style>
+</head>
+<body>
+  <div id="passwordScreen">
+    <h1>Enter Password</h1>
+    <input type="password" id="passwordInput" placeholder="password please">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="errorMessage" style="display: none;">
+      Incorrect password. woop woop you are so 67 mid you skibbidy
+    </p>
+  </div>
+
+  <div id="mainContent">
+    <h1>🎉 Welcome to Bubba's Gramama!</h1>
+    <button id="launchBtn" onclick="launchWormhole()">Launch Game</button>
+    <p>Welcome. Please press the 'Launch Game' button to proceed.</p>
+  </div>
+
+  <!-- Wormhole animation overlay -->
+  <div id="wormhole"></div>
+
+  <script>
+    const correctPassword = ("jkiklolxdtytysm","q");
+
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim();
+      const error = document.getElementById("errorMessage");
+      if (input === correctPassword) {
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "flex";
+      } else {
+        error.style.display = "block";
+      }
+    }
+
+    function launchWormhole() {
+      const wormhole = document.getElementById("wormhole");
+      const btn = document.getElementById("launchBtn");
+
+      // Position wormhole at button
+      const rect = btn.getBoundingClientRect();
+      wormhole.style.top = rect.top + rect.height/2 + "px";
+      wormhole.style.left = rect.left + rect.width/2 + "px";
+
+      // Animate wormhole expansion
+      wormhole.style.transform = "translate(-50%, -50%) scale(50)";
+
+      // After animation, open new site and attempt to close this one
+      setTimeout(() => {
+        var win = window.open()
+var url = "https://lolpopami2354.github.io/test4"
+var iframe = win.document.createElement('iframe')
+iframe.style.width = "100%";
+iframe.style.height = "100%";
+iframe.style.border = "none";
+iframe.src = url
+win.document.body.appendChild(iframe)
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
